@@ -1,34 +1,13 @@
-# Makefile
+# CMakeLists.txt
 
-# Compiler
-CC = gcc
+cmake_minimum_required(VERSION 3.10)
 
-# Compiler flags
-CFLAGS = -Wall -Wextra -Werror
+# Set the project name and version
+project(developScript VERSION 1.0)
 
-# Target executable
-TARGET = main
+# Specify the C standard
+set(CMAKE_C_STANDARD 11)
+set(CMAKE_C_STANDARD_REQUIRED True)
 
-# Source files
-SRCS = developScript.c
-
-# Object files
-OBJS = $(SRCS:.c=.o)
-
-# Default target
-all: $(TARGET)
-
-# Rule to build the target executable
-$(TARGET): $(OBJS)
-	$(CC) $(CFLAGS) -o $@ $^
-
-# Rule to build object files
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
-
-# Clean up build files
-clean:
-	rm -f $(OBJS) $(TARGET)
-
-# Phony targets
-.PHONY: all clean
+# Add the executable
+add_executable(developScript developScript.c)
